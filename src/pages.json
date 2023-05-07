@@ -1,24 +1,21 @@
 {
     "pages": [
         {
+            "name": "Home",
             "path": "pages/index/index",
             "style": {
                 "navigationBarTitleText": "Home"
-            },
-            "meta": {
-                "ignoreAuth": true
             }
         },
         {
+            "name": "Demo",
             "path": "pages/demo/index",
             "style": {
                 "navigationBarTitleText": "Demo"
-            },
-            "meta": {
-                "ignoreAuth": true
             }
         },
         {
+            "name": "About",
             "path": "pages/about/index",
             "style": {
                 "navigationBarTitleText": "关于"
@@ -28,6 +25,7 @@
             }
         },
         {
+            "name": "Login",
             "path": "pages/login/index",
             "style": {
                 "navigationBarTitleText": "登录"
@@ -37,12 +35,14 @@
             }
         },
         {
+            "name": "Log",
             "path": "pages/log/index",
             "style": {
                 "navigationBarTitleText": "日志"
             }
         },
         {
+            "name": "NotFound",
             "path": "pages/notFound/404",
             "style": {
                 "navigationBarTitleText": "Not Found"
@@ -57,6 +57,7 @@
             "root": "pagesA",
             "pages": [
                 {
+                    "name": "test1",
                     "path": "list/test1/index",
                     "style": {
                         "navigationBarTitleText": "test1"
@@ -66,6 +67,7 @@
                     }
                 },
                 {
+                    "name": "test2",
                     "path": "list/test2/index",
                     "style": {
                         "navigationBarTitleText": "test2",
@@ -81,6 +83,7 @@
             "root": "pagesB",
             "pages": [
                 {
+                    "name": "Detail",
                     "path": "detail/index",
                     "style": {
                         "navigationBarTitleText": "Detail"

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import BasicButton from '@/components/BasicButton/index.vue';
-import { useRouter } from '@/hooks/router';
+import { useRouter } from 'uni-mini-router';
 
 const router = useRouter();
 const jumpTest2 = () => {

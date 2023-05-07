@@ -44,7 +44,7 @@ export const rpx2px = (upx: number) => {
 
 /**
  * px 换算为 rpx
- * @param upx
+ * @param px
  */
 export const px2rpx = (px: number) => {
     return px / (uni.upx2px(100) / 100);

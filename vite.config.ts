@@ -3,6 +3,7 @@ import { ConfigEnv, loadEnv, UserConfig } from 'vite';
 import { resolve } from 'path';
 import uni from '@dcloudio/vite-plugin-uni';
 import Unocss from 'unocss/vite';
+import TransformPages from 'uni-read-pages-vite'
 
 export default ({ mode }: ConfigEnv): UserConfig => {
     const root = process.cwd();
@@ -19,6 +20,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         // 自定义全局变量
         define: {
             'process.env': {},
+            ROUTES: new TransformPages().routes, // 注入路由表
         },
         // 开发服务器配置
         server: {

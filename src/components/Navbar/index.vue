@@ -6,7 +6,7 @@
 import { useSystem } from '@/hooks/useSystem';
 import { px2rpx } from '@/utils/uniapi';
 import { computed, ref } from 'vue';
-import { useRoute, useRouter } from '@/hooks/router';
+import { useRoute, useRouter } from 'uni-mini-router';
 import { useGlobalStyle } from '@/hooks/useGlobalStyle';
 import Iconify from '@/components/Iconify/index.vue';
 import { HOME_PAGE } from '@/enums/routerEnum';

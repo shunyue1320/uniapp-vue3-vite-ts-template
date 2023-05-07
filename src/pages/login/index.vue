@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
+import { reactive, ref, unref } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 import { useAuthStore } from '@/state/modules/auth';
 import { Toast } from '@/utils/uniapi/prompt';
-import { useRouter } from '@/hooks/router';
+import { useRouter } from 'uni-mini-router';
 import { useRequest } from 'alova';
 import { login } from '@/services/api/auth';
+import { omit } from 'lodash-es';
 
-const redirect = ref<string | undefined>(undefined);
+const pageQuery = ref<Record<string, any> | undefined>(undefined);
 onLoad((query) => {
-    redirect.value = query.redirect ? decodeURIComponent(query.redirect) : undefined;
+    pageQuery.value = query;
 });
 
 const router = useRouter();
@@ -25,11 +26,13 @@ const submit = (e: any) => {
         Toast('登录成功', { duration: 1500 });
         authStore.setToken(res.token);
         setTimeout(() => {
-            if (redirect.value) {
-                router.go(redirect.value!, { replace: true });
-                return;
+            if (unref(pageQuery)?.redirect) {
+                // 如果有存在redirect(重定向)参数，登录成功后直接跳转
+                router.replace({ name: unref(pageQuery).redirect, params: omit(unref(pageQuery), ['redirect']) });
+            } else {
+                // 不存在则回到首页
+                router.replaceAll({ name: 'Home' });
             }
-            router.pushTab('/pages/about/index');
         }, 1500);
     });
 };

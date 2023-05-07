@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import BasicButton from '@/components/BasicButton/index.vue';
 import AppProvider from '@/components/AppProvider/inedx.vue';
-import { useRouter } from '@/hooks/router';
+import { useRouter } from 'uni-mini-router';
 import { CURRENT_PLATFORM, PLATFORMS } from '@/enums/platformEnum';
 import { judgePlatform } from '@/utils/platform';
 import Iconify from '@/components/Iconify/index.vue';
@@ -18,8 +18,7 @@ const isVue3 = judgePlatform(PLATFORMS.VUE3);
 
 const router = useRouter();
 const handleGetStarted = () => {
-    router.pushTab('/pages/demo/index');
-    // router.push('/pages/log/index?id=4345&title=log');
+    router.pushTab({ path: '/pages/demo/index' });
 };
 const change = (e: any) => {
     console.log('click => ', e);

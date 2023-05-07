@@ -2,14 +2,14 @@
 import { onLoad } from '@dcloudio/uni-app';
 import { ref } from 'vue';
 import BasicButton from '@/components/BasicButton/index.vue';
-import { useRouter } from '@/hooks/router';
+import { useRouter } from 'uni-mini-router';
 
 const go = ref<string>('');
 const router = useRouter();
 const redirect = ref<string>('');
 onLoad((query) => {
-    go.value = query.go || '';
-    redirect.value = query.redirect || '';
+    go.value = query?.go || '';
+    redirect.value = query?.redirect || '';
 });
 
 /**
