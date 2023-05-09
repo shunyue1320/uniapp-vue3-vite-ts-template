@@ -15,10 +15,10 @@ function createBeforeEachGuard(router: Router) {
             next();
         } else if (!authStore.isLogin && to && to.name !== 'Login') {
             // 如果没有登录且目标路由不是登录页面则跳转到登录页面
-            next({ name: 'Login', params: { redirect: to.name, ...to.query } });
+            next({ name: 'Login', params: { redirect: to.name!, tabBar: to?.meta?.tabBar, ...to.query }, navType: 'push' });
         } else if (authStore.isLogin && to && to.name === 'Login') {
             // 如果已经登录且目标页面是登录页面则跳转至首页
-            next({ name: 'Home' });
+            next({ name: 'Home', navType: 'replaceAll' });
         } else {
             next();
         }
@@ -31,6 +31,7 @@ function createAfterEachGuard(router: Router) {
         if (!authStore.isLogin && to && to.name !== 'Login') {
             // 如果没有登录且目标路由不是登录页面则跳转到登录页面
             router.replaceAll({ name: 'Login', params: { redirect: to.name, ...to.query } });
+            router.push({ name: 'Login', tabBar: to?.meta?.tabBar, ...to.query });
         } else if (authStore.isLogin && to && to.name === 'Login') {
             // 如果已经登录且目标页面是登录页面则跳转至首页
             router.replaceAll({ name: 'Home' });
